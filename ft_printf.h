@@ -6,7 +6,7 @@
 /*   By: afantune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:32:34 by afantune          #+#    #+#             */
-/*   Updated: 2024/11/12 14:37:24 by afantune         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:15:48 by afantune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <limits.h>
 # include <stdarg.h>
-# include "Libft/libft.h"
+# include "libft/libft.h"
 
 int		ft_putchar(char c);
 int		ft_printf(const char *format, ...);

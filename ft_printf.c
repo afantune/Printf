@@ -6,43 +6,55 @@
 /*   By: afantune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:33:37 by afantune          #+#    #+#             */
-/*   Updated: 2024/11/12 14:23:48 by afantune         ###   ########.fr       */
+/*   Updated: 2024/11/13 13:01:42 by afantune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static int	is_specifier(char c)
+{
+	if (c == '%' || c == 's' || c == 'd' || c == 'i' || c == 'c' || c == 'p'
+		|| c == 'x' || c == 'X' || c == 'u')
+		return (1);
+	return (0);
+}
+
 static int	process_format(va_list args, const char *format)
 {
-	int	count;
+	int	i;
 
-	count = 0;
+	i = 0;
 	while (*format)
 	{
-		if (*format == '%')
+		if (*format == '%' && is_specifier(*(format + 1)))
 		{
 			format++;
 			if (*format == '\0')
-				return (count);
-			count += ft_format(*format, args);
+				return (i);
+			i += ft_format(*format, args);
 		}
 		else
 		{
 			ft_putchar_fd(*format, 1);
-			count++;
+			i++;
 		}
 		format++;
 	}
-	return (count);
+	return (i);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	int		count;
+	int		i;
 
+	if (!format)
+	{
+		return (-1);
+	}
 	va_start(args, format);
-	count = process_format(args, format);
+	i = process_format(args, format);
 	va_end(args);
-	return (count);
+	return (i);
 }

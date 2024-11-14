@@ -6,7 +6,7 @@
 #    By: afantune <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 10:28:26 by afantune          #+#    #+#              #
-#    Updated: 2024/11/12 14:21:42 by afantune         ###   ########.fr        #
+#    Updated: 2024/11/14 12:15:26 by afantune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,20 +17,17 @@ SRCS = 	ft_printf.c ft_format.c ft_putnbr.c ft_putnbr_base.c ft_putstr.c ft_putc
 
 OBJS = $(SRCS:.c=.o)
 NAME = libftprintf.a
-CC = @gcc
+CC = @cc
 CFLAGS = -Wall -Wextra -Werror -I$(LIBFT_DIR)
 AR = @ar
 RM = @rm -f
-LIBFT_DIR = ./Libft
+LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(AR) rcs $(NAME) $(OBJS)
-	$(AR) x $(LIBFT)
-	$(AR) rcs $(NAME) *.o
-	$(RM) *.o
+	$(AR) rcs $(NAME) $(OBJS) $(LIBFT_DIR)/ft_putchar_fd.o
 
 $(LIBFT):
 	@$(MAKE) -s -C $(LIBFT_DIR)
