@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afantune <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: afantune <afantune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 10:33:37 by afantune          #+#    #+#             */
-/*   Updated: 2024/11/13 13:01:42 by afantune         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:25:18 by afantune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static int	is_specifier(char c)
-{
-	if (c == '%' || c == 's' || c == 'd' || c == 'i' || c == 'c' || c == 'p'
-		|| c == 'x' || c == 'X' || c == 'u')
-		return (1);
-	return (0);
-}
 
 static int	process_format(va_list args, const char *format)
 {
@@ -27,7 +19,7 @@ static int	process_format(va_list args, const char *format)
 	i = 0;
 	while (*format)
 	{
-		if (*format == '%' && is_specifier(*(format + 1)))
+		if (*format == '%')
 		{
 			format++;
 			if (*format == '\0')

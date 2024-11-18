@@ -6,7 +6,7 @@
 /*   By: afantune <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:09:57 by afantune          #+#    #+#             */
-/*   Updated: 2024/11/12 14:15:41 by afantune         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:53:01 by afantune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ int	ft_format(char specifier, va_list args)
 		return (ft_upperhex_conversion(args));
 	else if (specifier == '%')
 		return (ft_percent_conversion());
-	return (0);
+	return (1);
 }
